@@ -17,7 +17,7 @@ import ArticleImage4 from "../assets/jpg/articlePhoto4.jpg";
 import ArticleImage5 from "../assets/jpg/articlePhoto5.jpg";
 import ArticleImage6 from "../assets/jpg/articlePhoto6.jpg";
 
-function Articles() {
+function Articles({ isSmallerThan400 }) {
   const [page, setPage] = useState(1);
 
   const articlesPerPage = 3;
@@ -46,55 +46,117 @@ function Articles() {
     startIndex + articlesPerPage
   );
   return (
-    <Box
-      ml={{ md: "2.75rem", lg: "4.75rem", xl: "6.75rem" }}
-      mr={{ md: "2.75rem", lg: "4.75rem", xl: "6.75rem" }}
-      mt="9.875rem"
-    >
-      <Heading
-        fontFamily="Source Sans Pro"
-        fontWeight="600"
-        fontSize="56px"
-        lineHeight="42px"
-        letterSpacing="0.04em"
-        color="#0E2368"
-        className="articleMainHeading"
-      >
-        Latest Articles
-      </Heading>
-      <Flex wrap="true" gap="2.5625rem" mt="4.25rem" flexDirection="row">
-        {displayedArticles.map((article) => (
-          <ArticleCard
-            key={article.id}
-            headingName={article.headingName}
-            image={article.image}
-          />
-        ))}
-      </Flex>
-      <Flex justifyContent="center" mt="4rem">
-        <ButtonGroup>
-          <Button
-            border="1px solid #AFAFAF"
-            borderRadius="5px"
-            bg="#FFFFFF"
-            onClick={handlePrevPage}
+    <>
+      {isSmallerThan400 ? (
+        <>
+          <Box textAlign="center" mt="9.875rem">
+            <Heading
+              fontFamily="Source Sans Pro"
+              fontWeight="600"
+              fontSize="28px"
+              lineHeight="54px"
+              letterSpacing="0.04em"
+              color="#0E2368"
+              className="articleMainHeading"
+            >
+              Latest Articles
+            </Heading>
+            <Flex
+              alignItems="center"
+              gap="3.81rem"
+              mt="1.44rem"
+              flexDirection="column"
+            >
+              {displayedArticles.map((article) => (
+                <ArticleCard
+                  key={article.id}
+                  headingName={article.headingName}
+                  image={article.image}
+                  isSmallerThan400={isSmallerThan400}
+                />
+              ))}
+            </Flex>
+            <Flex justifyContent="center" mt="4rem">
+              <ButtonGroup>
+                <Button
+                  w="1rem"
+                  h="2rem"
+                  border="1px solid #AFAFAF"
+                  borderRadius="5px"
+                  bg="#FFFFFF"
+                  onClick={handlePrevPage}
+                >
+                  <AiOutlineLeft />
+                </Button>
+                <span className="pageNo" style={{ marginTop: "0.2rem" }}>
+                  {page}/2
+                </span>
+                <Button
+                  w="1rem"
+                  h="2rem"
+                  border="1px solid #AFAFAF"
+                  borderRadius="5px"
+                  bg="#FFFFFF"
+                  onClick={handleNextPage}
+                >
+                  <AiOutlineRight />
+                </Button>
+              </ButtonGroup>
+            </Flex>
+          </Box>
+        </>
+      ) : (
+        <Box
+          ml={{ md: "2.75rem", lg: "4.75rem", xl: "6.75rem" }}
+          mr={{ md: "2.75rem", lg: "4.75rem", xl: "6.75rem" }}
+          mt="9.875rem"
+        >
+          <Heading
+            fontFamily="Source Sans Pro"
+            fontWeight="600"
+            fontSize="56px"
+            lineHeight="42px"
+            letterSpacing="0.04em"
+            color="#0E2368"
+            className="articleMainHeading"
           >
-            <AiOutlineLeft />
-          </Button>
-          <span className="pageNo" style={{ marginTop: "0.25rem" }}>
-            {page}/2
-          </span>
-          <Button
-            border="1px solid #AFAFAF"
-            borderRadius="5px"
-            bg="#FFFFFF"
-            onClick={handleNextPage}
-          >
-            <AiOutlineRight />
-          </Button>
-        </ButtonGroup>
-      </Flex>
-    </Box>
+            Latest Articles
+          </Heading>
+          <Flex gap="2.5625rem" mt="4.25rem" flexDirection="row">
+            {displayedArticles.map((article) => (
+              <ArticleCard
+                key={article.id}
+                headingName={article.headingName}
+                image={article.image}
+              />
+            ))}
+          </Flex>
+          <Flex justifyContent="center" mt="4rem">
+            <ButtonGroup>
+              <Button
+                border="1px solid #AFAFAF"
+                borderRadius="5px"
+                bg="#FFFFFF"
+                onClick={handlePrevPage}
+              >
+                <AiOutlineLeft />
+              </Button>
+              <span className="pageNo" style={{ marginTop: "0.25rem" }}>
+                {page}/2
+              </span>
+              <Button
+                border="1px solid #AFAFAF"
+                borderRadius="5px"
+                bg="#FFFFFF"
+                onClick={handleNextPage}
+              >
+                <AiOutlineRight />
+              </Button>
+            </ButtonGroup>
+          </Flex>
+        </Box>
+      )}
+    </>
   );
 }
 export default Articles;

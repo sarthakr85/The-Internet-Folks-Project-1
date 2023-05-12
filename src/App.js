@@ -33,10 +33,10 @@ function App() {
 
   return (
     <>
-      <Home />
-      <AboutUs />
-      <Articles />
-      <Footer />
+      <Home isSmallerThan400={isSmallerThan400} />
+      <AboutUs isSmallerThan400={isSmallerThan400} />
+      <Articles isSmallerThan400={isSmallerThan400} />
+      <Footer isSmallerThan400={isSmallerThan400} />
     </>
   );
 }
