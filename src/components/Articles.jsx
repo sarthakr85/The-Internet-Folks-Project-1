@@ -19,6 +19,8 @@ import ArticleImage6 from "../assets/jpg/articlePhoto6.jpg";
 
 function Articles({ isSmallerThan400 }) {
   const [page, setPage] = useState(1);
+  const [leftDisabled, setLeftDisabled] = useState(true);
+  const [rightDisabled, setRightDisabled] = useState(false);
 
   const articlesPerPage = 3;
   const articles = [
@@ -34,10 +36,14 @@ function Articles({ isSmallerThan400 }) {
 
   const handleNextPage = () => {
     setPage((prev) => (prev < pageCount ? prev + 1 : prev));
+    setLeftDisabled(false);
+    setRightDisabled(true);
   };
 
   const handlePrevPage = () => {
     setPage((prev) => (prev > 1 ? prev - 1 : prev));
+    setLeftDisabled(true);
+    setRightDisabled(false);
   };
 
   const startIndex = (page - 1) * articlesPerPage;
@@ -45,6 +51,7 @@ function Articles({ isSmallerThan400 }) {
     startIndex,
     startIndex + articlesPerPage
   );
+
   return (
     <>
       {isSmallerThan400 ? (
@@ -79,6 +86,7 @@ function Articles({ isSmallerThan400 }) {
             <Flex justifyContent="center" mt="4rem">
               <ButtonGroup>
                 <Button
+                  isDisabled={leftDisabled}
                   w="1rem"
                   h="2rem"
                   border="1px solid #AFAFAF"
@@ -92,6 +100,7 @@ function Articles({ isSmallerThan400 }) {
                   {page}/2
                 </span>
                 <Button
+                  isDisabled={rightDisabled}
                   w="1rem"
                   h="2rem"
                   border="1px solid #AFAFAF"
@@ -134,6 +143,7 @@ function Articles({ isSmallerThan400 }) {
           <Flex justifyContent="center" mt="4rem">
             <ButtonGroup>
               <Button
+                isDisabled={leftDisabled}
                 border="1px solid #AFAFAF"
                 borderRadius="5px"
                 bg="#FFFFFF"
@@ -145,6 +155,7 @@ function Articles({ isSmallerThan400 }) {
                 {page}/2
               </span>
               <Button
+                isDisabled={rightDisabled}
                 border="1px solid #AFAFAF"
                 borderRadius="5px"
                 bg="#FFFFFF"

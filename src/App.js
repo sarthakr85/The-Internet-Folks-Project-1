@@ -1,13 +1,4 @@
-import {
-  Box,
-  Grid,
-  GridItem,
-  useBreakpointValue,
-  Image,
-  Flex,
-  Button,
-  Text,
-} from "@chakra-ui/react";
+import { useBreakpointValue } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import Home from "./components/Home";
 import AboutUs from "./components/AboutUs";
@@ -27,6 +18,7 @@ const theme = extendTheme({ breakpoints });
 function App() {
   const isSmallerThan400 = useBreakpointValue({
     base: true,
+    sm: false,
     md: false,
     lg: false,
   });

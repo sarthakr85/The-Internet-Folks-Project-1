@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react";
 import Logo from "../assets/jpg/logo.jpg";
 import LandingPagePhoto from "../assets/jpg/landingPagePhoto.jpg";
+import Vector1 from "../assets/jpg/Vector 1.png";
+import LandingPagePhoto2 from "../assets/jpg/Rectangle 400.jpg";
 
 function Home({ isSmallerThan400 }) {
   return (
@@ -18,7 +20,27 @@ function Home({ isSmallerThan400 }) {
       {isSmallerThan400 ? (
         <>
           <Flex w={{ base: "100%" }} h="50.5rem" flexDirection="column">
-            <Image h="26.625rem" src={LandingPagePhoto} />
+            <Box h="25.9rem" bgImage={LandingPagePhoto2}>
+              <Image h="27.2rem" src={Vector1} />
+              <Button
+                position="relative"
+                bottom="26rem"
+                left="16.5rem"
+                fontFamily="Source Sans Pro"
+                fontWeight="700"
+                fontSize="11px"
+                letterSpacing="0.01em"
+                lineHeight="46px"
+                color="#ffffff"
+                colorScheme="#E23744"
+                border="1px solid #FFFFFF"
+                borderRadius="21px"
+                className="homeButton"
+                zIndex="1"
+              >
+                Contact Us
+              </Button>
+            </Box>
             <Flex textAlign="center" flexDirection="column" p="4.19rem">
               <Heading
                 fontFamily="Source Sans Pro"
@@ -118,8 +140,26 @@ function Home({ isSmallerThan400 }) {
               </Flex>
             </Box>
             <Box rowSpan={1} colSpan={1}>
-              <Box bg="#E23744">
-                <Image src={LandingPagePhoto} />
+              <Box h="804px" bgImage={LandingPagePhoto}>
+                <Image h="820px" src={Vector1} />
+                <Button
+                  position="relative"
+                  bottom="49rem"
+                  left={{ md: "20rem", lg: "26rem", xl: "32rem" }}
+                  p="1.2rem"
+                  fontFamily="Source Sans Pro"
+                  fontWeight="700"
+                  fontSize="16px"
+                  letterSpacing="0.01em"
+                  lineHeight="36px"
+                  color="#ffffff"
+                  colorScheme="#E23744"
+                  border="1px solid #FFFFFF"
+                  borderRadius="21px"
+                  className="homeButton"
+                >
+                  Contact Us
+                </Button>
               </Box>
             </Box>
           </Grid>
